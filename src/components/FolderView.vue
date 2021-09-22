@@ -1,11 +1,17 @@
 <template>
-  <p class="folder">{{name}}</p>
-  <template v-for="folder in folders">
-    <FolderView :name="folder.name" :folders="folder.folders" :files="folder.files"/>
-  </template>
-  <template v-for="file in files">
-    <FileView :name="file.name"/>
-  </template>
+  
+    <div class="folder" :class="{'open':isOpen===true}"  v-on:click="toggle">
+      <p>{{name}}</p>
+    </div>
+    <div class="folder-list" v-show="isOpen">
+      <template v-for="folder in folders">
+        <FolderView :name="folder.name" :folders="folder.folders" :files="folder.files"/>
+      </template>
+      <template v-for="file in files">
+        <FileView :name="file.name"/>
+      </template>
+    </div>
+  
 </template>
 
 <script>
@@ -17,13 +23,73 @@ export default {
     name: String,
     folders:Array,
     files:Array
+  },
+  data: function() {
+    
+    return {
+      isOpen: true,
+    }
+  },
+  methods: {
+    toggle: function() {
+      this.isOpen = !this.isOpen;
+    }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.folder{
-  color: orangered;
+
+.folder {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  color: #333333;
+  width: 120px;
+  height: 30px;
+  padding-left: 60px;
+  background-image: url("../img/folder.svg");
+  background-repeat: no-repeat;
+  background-position: 10%;
+  background-size: contain;
+  text-decoration: none;
+  margin-top: 0;
+  margin-bottom: 15px;
+  position: relative;
+  cursor: pointer;
+  
+  &::before {
+    content: "";
+    position: absolute;
+    background-image: url("../img/arrow.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 6px;
+    height: 10px;
+    left: 0;
+    transition: transform .2s ease-out;
+  }
+
+  &:hover {
+    color: rgba(#333333, 0.6);
+  }
 }
+
+.folder.open {
+  &::before {
+    transform: rotate(90deg);
+  }
+}
+
+
+.folder-list {
+  padding-left: 40px;
+}
+
+// .folder-item.root {
+ 
+// }
+
 </style>
