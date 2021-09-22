@@ -22,6 +22,13 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column
+  flex-direction: column;
+  margin-top: 30px;
+  margin-left: 30px;
 }
+
+body {
+  background-color: #17141D;
+}
+
 </style>

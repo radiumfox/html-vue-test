@@ -1,5 +1,5 @@
 <template>
-  
+ <div class="wrap">
     <div class="folder" :class="{'open':isOpen===true}"  v-on:click="toggle">
       <p>{{name}}</p>
     </div>
@@ -7,10 +7,13 @@
       <template v-for="folder in folders">
         <FolderView :name="folder.name" :folders="folder.folders" :files="folder.files"/>
       </template>
-      <template v-for="file in files">
-        <FileView :name="file.name"/>
-      </template>
+      <div class="file-wrap">
+        <template v-for="file in files">
+          <FileView :name="file.name"/>
+        </template>
+      </div>
     </div>
+  </div>
   
 </template>
 
@@ -33,6 +36,13 @@ export default {
   methods: {
     toggle: function() {
       this.isOpen = !this.isOpen;
+    },
+
+    fade: function() {
+      const lists = document.querySelectorAll(".folder-list");
+      lists.forEach(item, () => {
+       item.style.transition = "all 2s"; 
+      });
     }
   }
 }
@@ -46,7 +56,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: start;
-  color: #333333;
+  color: white;
   width: 120px;
   height: 30px;
   padding-left: 60px;
@@ -59,6 +69,8 @@ export default {
   margin-bottom: 15px;
   position: relative;
   cursor: pointer;
+
+  // background-color: #21212A;
   
   &::before {
     content: "";
@@ -73,7 +85,7 @@ export default {
   }
 
   &:hover {
-    color: rgba(#333333, 0.6);
+    color: rgba(white, 0.6);
   }
 }
 
@@ -86,10 +98,8 @@ export default {
 
 .folder-list {
   padding-left: 40px;
+  
 }
 
-// .folder-item.root {
- 
-// }
 
 </style>
