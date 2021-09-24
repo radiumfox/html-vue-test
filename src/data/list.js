@@ -28,7 +28,6 @@ export default {
           }
         ]
       },
-      
       {
         name: "backgrounds",
         folders:[],

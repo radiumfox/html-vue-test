@@ -24,10 +24,8 @@ export default {
   flex-wrap: wrap;
   flex-direction: column;
   margin-top: 30px;
-  margin: 30px auto 0;
+  margin-left: 30px;
   max-width: 380px;
-  border: 1px solid rgba(white, 0.1);
-  background-image: url('./img/line.svg');
 }
 
 body {

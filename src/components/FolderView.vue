@@ -41,26 +41,43 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 
+.wrap {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: calc(100% - 47px);
+    background-color: rgba(white, 0.1);
+    left: 13px;
+    top: 34px;
+  }
+}
+
 .folder {
+  position: relative;
   font-size: 18px;
   color: white;
+  text-decoration: none;
+  height: 40px;
+  max-width: 180px;
+  padding-left: 49px;
+  margin-top: 0;
+  margin-left: 10px;
+
   display: flex;
   align-items: center;
   justify-content: start;
-  height: 40px;
-  padding-left: 49px;
+  
   background-image: url("../img/folder.svg");
   background-repeat: no-repeat;
-  background-position: 5%;
-  background-size: 24px 24px;
-  text-decoration: none;
-  margin-top: 0;
-  margin-left: 10px;
-  position: relative;
+  background-position: 7%;
+  background-size: 27px 27px;
+  
   cursor: pointer;
-  transition: color .1s ease-out;
+  transition: all .1s ease-out;
   user-select: none;
-  overflow-x: hidden;
 
   &::before {
     content: "";
@@ -71,6 +88,7 @@ export default {
     width: 8px;
     height: 10px;
     left: 0;
+    top: 18px;
     transition: transform .2s ease-out;
   }
 
@@ -84,6 +102,8 @@ export default {
 }
 
 .folder.open {
+  background-image: url("../img/folder-open.svg");
+
   &::before {
     transform: rotate(90deg);
   }
@@ -95,7 +115,7 @@ export default {
 }
 
 .folder-list {
-  padding-left: 30px;
+  padding-left: 38px;
 }
 
 </style>

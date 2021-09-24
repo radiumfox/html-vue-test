@@ -42,36 +42,32 @@ export default {
 <style scoped lang="scss">
 
 .file {
+  position: relative;
   font-size: 18px;
   color: white;
-  background-repeat: no-repeat;
-  height: 39.85px;
-  text-align: center;
+  height: 40px;
+  max-width: 240px;
+
   display: flex;
   align-items: center;
   justify-content: start;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: color .1s ease-out;
-  user-select: none;
-  position: relative;
+  padding-left: 10px;
   margin-left: 10px;
-  overflow-x: visible;
-  
+  transition: color .1s ease-out;
+  cursor: pointer;
+  user-select: none;
+
   &:hover {
     color: rgba(white, 0.6);
+    outline: 1px solid rgba(white, 0.1);
   }
-}
-
-.file {
-  position: relative;
-  overflow-x: hidden;
 }
 
 .file-name {
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .file-icon {
@@ -84,7 +80,7 @@ export default {
   font-size: 10px;
   color: rgba(white, 0.3);
   margin: 0 0 0 auto;
-  padding: 0 15px;
+  padding: 0 10px;
 }
 
 .file:hover .file-size {
