@@ -112,6 +112,9 @@ export default {
 .folder-name {
   margin: 0;
   line-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .folder-list {
